@@ -1,0 +1,68 @@
+﻿@model SwapnaliTask.Models.Entry
+
+@{
+    ViewData["Title"] = "Create Entry";
+}
+
+<h2>Create Entry</h2>
+
+<form method="post" class="form-horizontal">
+    <div class="form-group">
+        <label for="Account" class="col-md-2 control-label">Account Type</label>
+        <div class="col-md-10">
+            <select id="Account" name="Account" class="form-control">
+                <option value="">-- Select Account Type --</option>
+                <option value="Savings">Savings</option>
+                <option value="Checking">Checking</option>
+                <option value="Business">Business</option>
+                <option value="Loan">Loan</option>
+            </select>
+            <span class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Narration" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Narration" class="form-control" />
+            <span asp-validation-for="Narration" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Currency" class="col-md-2 control-label">Currency</label>
+        <div class="col-md-10">
+            <select id="Currency" name="Currency" class="form-control">
+                <option value="">-- Select Currency --</option>
+                <option value="INR">INR - Indian Rupee</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="USD">USD - US Dollar</option>
+            </select>
+            <span class="text-danger" data-valmsg-for="Currency" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Credit" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Credit" class="form-control" />
+            <span asp-validation-for="Credit" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Debit" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Debit" class="form-control" />
+            <span asp-validation-for="Debit" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</form>

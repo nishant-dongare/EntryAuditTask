@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+@model List<SwapnaliTask.Models.Entry>
+
+<h1>@ViewBag.id</h1>
+
+<a asp-action="AddEntry" asp-controller="Home" class="btn btn-primary">Add Entry</a>
+
+@if (Model == null || Model.Count < 1)
+{
+    <h1>No Entries Available</h1>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Entry ID</th>
+                <th>User</th>
+                <th>Account</th>
+                <th>Narration</th>
+                <th>Currency</th>
+                <th>Credit</th>
+                <th>Debit</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in Model)
+            {
+                <tr>
+                    <td>@entry.EntryID</td>
+                    <td>@entry.User.Username</td>
+                    <td>@entry.Account</td>
+                    <td>@entry.Narration</td>
+                    <td>@entry.Currency</td>
+                    <td>@entry.Credit?.ToString("C2")</td>
+                    <td>@entry.Debit?.ToString("C2")</td>
+                    <td>@entry.CreatedAt.ToString("g")</td>
+                    <td>
+                        <a class="btn btn-primary">Edit</a> <a class="btn btn-primary" asp-action="DeleteEntry" asp-route-id="@entry.EntryID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var successMessage = '@TempData["message"]';
+        if (successMessage) {
+            alert(successMessage);
+        }
+    });
+</script>
